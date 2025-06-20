@@ -45,5 +45,3 @@ Zop Customer Review is a server application designed to retrieve and sync top-se
 - `@types/node`: Type definitions for Node.js.
 - `typescript`: TypeScript compiler.
 
-## License
-This project is licensed under the ISC License.
