@@ -3,7 +3,6 @@ import {
   ResourceTemplate,
 } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-// import { z } from "zod";
 
 const server = new McpServer({
   name: "zop-customer-reviews",
@@ -61,61 +60,5 @@ server.tool(
   }
 );
 
-// server.registerTool(
-//   "calculate-bmi",
-//   {
-//     title: "BMI Calculator",
-//     description: "Calculate Body Mass Index",
-//     inputSchema: {
-//       weightKg: z.number(),
-//       heightM: z.number(),
-//     },
-//   },
-//   async ({ weightKg, heightM }) => ({
-//     content: [
-//       {
-//         type: "text",
-//         text: String(weightKg / (heightM * heightM)),
-//       },
-//     ],
-//   })
-// );
-
-// Async tool with external API call
-// server.registerTool(
-//   "fetch-weather",
-//   {
-//     title: "Weather Fetcher",
-//     description: "Get weather data for a city",
-//     inputSchema: { city: z.string() },
-//   },
-//   async ({ city }) => {
-//     const response = await fetch(`https://api.weather.com/${city}`);
-//     const data = await response.text();
-//     return {
-//       content: [{ type: "text", text: data }],
-//     };
-//   }
-// );
-
-// Add a dynamic greeting resource
-// server.registerResource(
-//   "greeting",
-//   new ResourceTemplate("greeting://{name}", { list: undefined }),
-//   {
-//     title: "Greeting Resource", // Display name for UI
-//     description: "Dynamic greeting generator",
-//   },
-//   async (uri: { href: any }, { name }: any) => ({
-//     contents: [
-//       {
-//         uri: uri.href,
-//         text: `Hello, ${name}!`,
-//       },
-//     ],
-//   })
-// );
-
-// Start receiving messages on stdin and sending messages on stdout
 const transport = new StdioServerTransport();
 await server.connect(transport);
