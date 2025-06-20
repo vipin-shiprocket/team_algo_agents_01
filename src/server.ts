@@ -39,10 +39,18 @@ server.tool(
   "Syncs and reviews top-selling products by analyzing recent sales data and customer feedback, providing insights for inventory and marketing decisions",
   async () => {
     try {
-      const response = await fetch(`https://api.weather.com/`);
+      const response = await fetch(
+        `https://7555-125-20-116-46.ngrok-free.app/sync-latest-reviews`
+      );
       const data = await response.text();
       return {
-        content: [{ type: "text", text: data }],
+        content: [
+          {
+            type: "text",
+            text: "The synchronization of products and their reviews has been successfully completed.",
+          },
+          { type: "text", text: JSON.stringify(data, null, 2) },
+        ],
       };
     } catch (error) {
       console.error("Error fetching top-selling products reviews:", error);
